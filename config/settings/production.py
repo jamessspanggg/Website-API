@@ -17,3 +17,22 @@ DEBUG = False
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {'format': '%(asctime)s %(levelname)s %(module)s: %(message)s'}
+    },
+    'handlers': {
+        'analyzer': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/opt/python/log/analyzer.log',
+            'formatter': 'verbose',
+        }
+    },
+    'loggers': {
+        'analyzer': {'handlers': ['analyzer'], 'level': 'DEBUG', 'propagate': True}
+    },
+}
